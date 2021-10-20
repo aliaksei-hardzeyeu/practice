@@ -1,6 +1,8 @@
+package home_work_1;
+
 import java.util.Collection;
 
-public interface MyArrayList {
+public interface MyArrayList<T> {
 
     /**
      * Adds element to list
@@ -9,7 +11,7 @@ public interface MyArrayList {
      * @return resulting list
      */
 
-    void add(String element);
+    void add(T element);
 
 
     /**
@@ -18,7 +20,7 @@ public interface MyArrayList {
      * @param element
      * @return index of searched element
      */
-    int contains(String element);
+    int contains(T element);
 
 
     /**
@@ -28,7 +30,7 @@ public interface MyArrayList {
      * @return resulting list
      */
 
-    void addAll(Collection<String> collection);
+    void addAll(Collection<T> collection);
 
 
     /**

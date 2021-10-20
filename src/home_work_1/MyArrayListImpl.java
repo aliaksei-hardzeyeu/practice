@@ -1,10 +1,12 @@
+package home_work_1;
+
 import java.util.Arrays;
 import java.util.Collection;
 
-public class MyArrayListImpl implements MyArrayList {
-    private String[] innerArr;
+public class MyArrayListImpl<T> implements MyArrayList<T> {
+    private T[] innerArr;
 
-    public MyArrayListImpl(String[] innerArr) {
+    public MyArrayListImpl(T[] innerArr) {
         this.innerArr = innerArr;
     }
 
@@ -13,19 +15,19 @@ public class MyArrayListImpl implements MyArrayList {
 
 
     @Override
-    public void add(String element) {
-        String[] resultingArray;
+    public void add(T element) {
+        T[] resultingArray;
 //if there`re no elements -> starting new array with 1 element
 
         if (this.innerArr == null) {
-            this.innerArr = new String[1];
+            this.innerArr = (T[]) new Object[1];
             innerArr[0] = element;
 
 //if there are elements -> creating new array with length +1 to innerArray, copying innerArray
 //to resultingArray and add element as last element
 
         } else {
-            resultingArray = new String[this.innerArr.length + 1];
+            resultingArray = (T[])new Object[innerArr.length + 1];
 
             for (int i = 0; i < this.innerArr.length; i++) {
                 resultingArray[i] = this.innerArr[i];
@@ -37,7 +39,7 @@ public class MyArrayListImpl implements MyArrayList {
     }
 
     @Override
-    public int contains(String element) {
+    public int contains(T element) {
 //finds the first occurrence of element in list
 //-1 if there are no
         for (int i = 0; i < this.innerArr.length; i++) {
@@ -50,12 +52,12 @@ public class MyArrayListImpl implements MyArrayList {
     }
 
     @Override
-    public void addAll(Collection<String> collection) {
-    String[] secArr = collection.toArray(new String[collection.size()]);
-    String[] resultingArr = new String[secArr.length + this.innerArr.length];
+    public void addAll(Collection<T> collection) {
+    T[] secArr = collection.toArray((T[]) new Object[collection.size()]);
+    T[] resultingArr = (T[]) new Object[secArr.length + this.innerArr.length];
 
-        for (int i = 0; i < innerArr.length; i++) {
-            resultingArr[i] = innerArr[i];
+        for (int i = 0; i < this.innerArr.length; i++) {
+            resultingArr[i] = this.innerArr[i];
         }
 
         for (int i = 0; i < secArr.length; i++) {
@@ -81,7 +83,7 @@ public class MyArrayListImpl implements MyArrayList {
 //            this.innerArr[i] = null;
 
 //        2)
-        String[] newArr = new String[0];
+        T[] newArr = (T[]) new Object[0];
         this.innerArr = newArr;
 
     }
@@ -93,7 +95,7 @@ public class MyArrayListImpl implements MyArrayList {
 
     @Override
     public void remove(int index) {
-        String[] resultingArray;
+        T[] resultingArray;
 //if there`re no elements -> starting new array with 1 element
 
         if (this.innerArr == null) {
@@ -104,15 +106,15 @@ public class MyArrayListImpl implements MyArrayList {
 //if there are elements and index of element is valid-> dividing innerArray into 2 parts,
 //"left" and "right" of index element, than add "right" to "left" in resulting array
 
-            resultingArray = new String[this.innerArr.length - 1];
-            String[] left = new String[index];
-            String[] right = new String[innerArr.length - index - 1];
+            resultingArray = (T[]) new Object[innerArr.length - 1];
+            T[] left =(T[]) new Object[index];
+            T[] right = (T[]) new Object[innerArr.length - index - 1];
 
             for (int i = 0; i < left.length; i++) {
                 left[i] = this.innerArr[i];
             }
 //            System.out.print("left arr >>> ");
-//            for (String x : left) {
+//            for (T x : left) {
 //                System.out.print(x + " ");
 //            }
 
@@ -121,7 +123,7 @@ public class MyArrayListImpl implements MyArrayList {
             }
 
 //            System.out.print("\nright arr >>> ");
-//            for (String x : right) {
+//            for (T x : right) {
 //                System.out.print(x + " ");
 //            }
 
@@ -133,8 +135,10 @@ public class MyArrayListImpl implements MyArrayList {
                 resultingArray[left.length + i] = right[i];
             }
 
+            this.innerArr = resultingArray;
+
 //            System.out.print("\nRESULTING arr >>> ");
-//            for (String x : resultingArray) {
+//            for (T x : resultingArray) {
 //                System.out.print(x + " ");
 //            }
         }
@@ -155,8 +159,8 @@ public class MyArrayListImpl implements MyArrayList {
     }
 
     public void print() {
-        System.out.print("innerArr >>> ");
-        for (String x : this.innerArr) {
+        System.out.println("PRINTING  >>> ");
+        for (T x : this.innerArr) {
             System.out.print(" " + x);
         }
     }
