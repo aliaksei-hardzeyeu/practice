@@ -44,7 +44,17 @@ public class MyArrayListImpl<T extends Comparable<? super T>> implements MyArray
     }
 
     @Override
+    public T get(int index) {
+
+        return this.innerArr[index];
+    }
+
+    @Override
     public void addAll(Collection<T> collection) {
+        if (this.innerArr == null) {
+          this.innerArr = (T[]) new Comparable[0];
+        }
+
         T[] secArr = collection.toArray((T[]) new Comparable[collection.size()]);
         T[] resultingArr = (T[]) new Comparable[secArr.length + this.innerArr.length];
 

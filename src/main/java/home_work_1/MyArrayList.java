@@ -21,8 +21,17 @@ public interface MyArrayList<T> {
      * @param element
      * @return index of searched element
      */
+
     int contains(T element);
 
+
+    /**
+     * Gets element by index
+     * @param index
+     * @return
+     */
+
+    T get(int index);
 
     /**
      * Adds collection to list
@@ -41,6 +50,7 @@ public interface MyArrayList<T> {
 
     void quickSort();
 
+
     /**
      * Removes all of the elements from this list.
      * @return empty list
@@ -53,6 +63,7 @@ public interface MyArrayList<T> {
      *
      * @return size of list
      */
+
     int size();
 
 
@@ -61,6 +72,7 @@ public interface MyArrayList<T> {
      * @param index
      * @return resulting list
      */
+
     void remove(int index);
 
 
@@ -68,12 +80,13 @@ public interface MyArrayList<T> {
      * Checks if list is empty
      * @return true if empty, false if not
      */
+
     boolean isEmpty();
+
 
     /**
      * Simple sorting
      */
-    void sort();
 
-    void print();
+    void sort();
 }
