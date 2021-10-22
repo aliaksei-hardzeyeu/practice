@@ -1,6 +1,7 @@
 package home_work_1;
 
 import java.util.Collection;
+import java.util.Comparator;
 
 public interface MyArrayList<T> {
 
@@ -34,7 +35,7 @@ public interface MyArrayList<T> {
 
 
     /**
-     * Sorts list
+     * QuickSorts list
      * @return sorted list
      */
 
