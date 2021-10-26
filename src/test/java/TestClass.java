@@ -36,25 +36,25 @@ public class TestClass {
     }
 
     @Test
-    public void givenListWithElement_containsElement_ReturnsElementIndex () {
+    public void givenListWithElement_containsElement_ReturnsElementIndex() {
 
         MyArrayList<User> actual = new MyArrayListImpl();
         actual.add(user);
         actual.add(user1);
         actual.add(user2);
 
-        Assertions.assertEquals( 1, actual.contains(user1), String.format("Expected:%s,but actual:%s", 1, actual.contains(user1)));
+        Assertions.assertEquals(1, actual.contains(user1), String.format("Expected:%s,but actual:%s", 1, actual.contains(user1)));
     }
 
     @Test
-    public void givenListWithoutElement_containsElement_ReturnsMinusOne () {
+    public void givenListWithoutElement_containsElement_ReturnsMinusOne() {
 
         MyArrayList<User> actual = new MyArrayListImpl();
         actual.add(user);
         actual.add(user1);
         actual.add(user2);
 
-        Assertions.assertEquals( -1, actual.contains(user4), String.format("Expected:%s,but actual:%s", 1, actual.contains(user1)));
+        Assertions.assertEquals(-1, actual.contains(user4), String.format("Expected:%s,but actual:%s", 1, actual.contains(user1)));
     }
 
     @Test
@@ -65,7 +65,7 @@ public class TestClass {
         actual.add(user1);
         actual.add(user2);
 
-        Assertions.assertEquals( user2, actual.get(2), String.format("Expected:%s,but actual:%s", 1, actual.get(2)));
+        Assertions.assertEquals(user2, actual.get(2), String.format("Expected:%s,but actual:%s", 1, actual.get(2)));
     }
 
     @Test
@@ -76,7 +76,9 @@ public class TestClass {
         actual.add(user1);
         actual.add(user2);
 
-        Assertions.assertThrows(IndexOutOfBoundsException.class, () -> {actual.get(-1);});
+        Assertions.assertThrows(IndexOutOfBoundsException.class, () -> {
+            actual.get(-1);
+        });
     }
 
     @Test
@@ -87,7 +89,9 @@ public class TestClass {
         actual.add(user1);
         actual.add(user2);
 
-        Assertions.assertThrows(IndexOutOfBoundsException.class, () -> {actual.get(10);});
+        Assertions.assertThrows(IndexOutOfBoundsException.class, () -> {
+            actual.get(10);
+        });
     }
 
     @Test
@@ -133,7 +137,9 @@ public class TestClass {
         actual.add(user1);
         actual.add(user2);
 
-        Assertions.assertThrows(NegativeArraySizeException.class, () -> {actual.remove(-1);});
+        Assertions.assertThrows(NegativeArraySizeException.class, () -> {
+            actual.remove(-1);
+        });
     }
 
     @Test
@@ -144,7 +150,9 @@ public class TestClass {
         actual.add(user1);
         actual.add(user2);
 
-        Assertions.assertThrows(IndexOutOfBoundsException.class, () -> {actual.remove(10);});
+        Assertions.assertThrows(IndexOutOfBoundsException.class, () -> {
+            actual.remove(10);
+        });
     }
 
 
@@ -206,8 +214,6 @@ public class TestClass {
         actual.add("g");
         actual.add("c");
         actual.quickSort();
-
-
 
         List<String> expected = new ArrayList<>();
         expected.add("b");
