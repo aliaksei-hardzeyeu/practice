@@ -52,7 +52,7 @@ public class MyArrayListImpl<T extends Comparable<? super T>> implements MyArray
     @Override
     public void addAll(Collection<T> collection) {
         if (this.innerArr == null) {
-          this.innerArr = (T[]) new Comparable[0];
+            this.innerArr = (T[]) new Comparable[0];
         }
 
         T[] secArr = collection.toArray((T[]) new Comparable[collection.size()]);
@@ -98,7 +98,7 @@ public class MyArrayListImpl<T extends Comparable<? super T>> implements MyArray
         if (this.innerArr == null) {
             System.out.println("Empty list, nothing to remove");
         } else if (index >= this.innerArr.length) {
-            System.out.println("Index out of bounds");
+            throw new IndexOutOfBoundsException();
         } else {
 
             //if there are elements and index of element is valid-> dividing innerArray into 2 parts,
@@ -144,6 +144,7 @@ public class MyArrayListImpl<T extends Comparable<? super T>> implements MyArray
         return Arrays.toString(innerArr);
     }
 
+
     public void print() {
         System.out.println("\nPRINTING  >>> ");
         if (this.innerArr == null) {
@@ -174,7 +175,7 @@ public class MyArrayListImpl<T extends Comparable<? super T>> implements MyArray
         quickSortInner(this.innerArr, 0, this.innerArr.length - 1);
     }
 
-    public void quickSortInner(T[] array, int start_index, int end_index) {
+    void quickSortInner(T[] array, int start_index, int end_index) {
         if (start_index < end_index) {
             int pIndex = partition(array, start_index, end_index);
             quickSortInner(array, start_index, pIndex - 1);
@@ -203,6 +204,7 @@ public class MyArrayListImpl<T extends Comparable<? super T>> implements MyArray
 
         return pIndex + 1;
     }
+
 
 
 }

@@ -1,7 +1,6 @@
 package home_work_1;
 
 import java.util.Collection;
-import java.util.Comparator;
 
 public interface MyArrayList<T> {
 
@@ -44,14 +43,6 @@ public interface MyArrayList<T> {
 
 
     /**
-     * QuickSorts list
-     * @return sorted list
-     */
-
-    void quickSort();
-
-
-    /**
      * Removes all of the elements from this list.
      * @return empty list
      */
@@ -85,8 +76,32 @@ public interface MyArrayList<T> {
 
 
     /**
+     * Returns string representation of list
+     * @return
+     */
+
+    String toString();
+
+
+    /**
+     * Prints list (service method)
+     */
+
+    void print();
+
+
+
+    /**
      * Simple sorting
      */
 
     void sort();
+
+
+    /**
+     * QuickSorts list
+     * @return sorted list
+     */
+
+    void quickSort();
 }

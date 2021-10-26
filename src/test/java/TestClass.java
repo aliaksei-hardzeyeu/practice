@@ -18,7 +18,7 @@ public class TestClass {
 
 
     @Test
-    public void add() {
+    public void givenEmptyList_whenAddElement_thenShouldContainAndIncreaseListSize() {
 
         MyArrayList<User> actual = new MyArrayListImpl();
         actual.add(user);
@@ -36,7 +36,7 @@ public class TestClass {
     }
 
     @Test
-    public void contains() {
+    public void givenListWithElement_containsElement_ReturnsElementIndex () {
 
         MyArrayList<User> actual = new MyArrayListImpl();
         actual.add(user);
@@ -47,7 +47,18 @@ public class TestClass {
     }
 
     @Test
-    public void get() {
+    public void givenListWithoutElement_containsElement_ReturnsMinusOne () {
+
+        MyArrayList<User> actual = new MyArrayListImpl();
+        actual.add(user);
+        actual.add(user1);
+        actual.add(user2);
+
+        Assertions.assertEquals( -1, actual.contains(user4), String.format("Expected:%s,but actual:%s", 1, actual.contains(user1)));
+    }
+
+    @Test
+    public void givenListWithElements_getByIndex_ReturnsElement() {
 
         MyArrayList<User> actual = new MyArrayListImpl();
         actual.add(user);
@@ -58,7 +69,29 @@ public class TestClass {
     }
 
     @Test
-    public void addAll() {
+    public void givenListWithElements_getByNegativeIndex_throwsIndexOutOfBoundsException() {
+
+        MyArrayList<User> actual = new MyArrayListImpl();
+        actual.add(user);
+        actual.add(user1);
+        actual.add(user2);
+
+        Assertions.assertThrows(IndexOutOfBoundsException.class, () -> {actual.get(-1);});
+    }
+
+    @Test
+    public void givenListWithElements_getByNotExistingIndex_throwsIndexOutOfBoundsException() {
+
+        MyArrayList<User> actual = new MyArrayListImpl();
+        actual.add(user);
+        actual.add(user1);
+        actual.add(user2);
+
+        Assertions.assertThrows(IndexOutOfBoundsException.class, () -> {actual.get(10);});
+    }
+
+    @Test
+    public void givenList_addCollection_addsCollectionToEndOfList() {
 
         List<User> expected = new ArrayList<>();
         expected.add(user);
@@ -68,13 +101,14 @@ public class TestClass {
         MyArrayList<User> actual = new MyArrayListImpl();
         actual.addAll(expected);
 
+
         for (int i = 0; i < actual.size(); i++) {
             Assertions.assertEquals(expected.get(i), actual.get(i), String.format("Expected:%s,but actual:%s", expected.get(i), actual.get(i)));
         }
     }
 
     @Test
-    public void remove() {
+    public void givenList_removeByIndex_removesElementFromList() {
 
         MyArrayList<User> actual = new MyArrayListImpl();
         actual.add(user);
@@ -92,7 +126,30 @@ public class TestClass {
     }
 
     @Test
-    public void sort() {
+    public void givenList_removeByNegativeIndex_throwsNegativeArraySizeException() {
+
+        MyArrayList<User> actual = new MyArrayListImpl();
+        actual.add(user);
+        actual.add(user1);
+        actual.add(user2);
+
+        Assertions.assertThrows(NegativeArraySizeException.class, () -> {actual.remove(-1);});
+    }
+
+    @Test
+    public void givenList_removeByNotExistingIndex_throwsIndexOutOfBoundsException() {
+
+        MyArrayList<User> actual = new MyArrayListImpl();
+        actual.add(user);
+        actual.add(user1);
+        actual.add(user2);
+
+        Assertions.assertThrows(IndexOutOfBoundsException.class, () -> {actual.remove(10);});
+    }
+
+
+    @Test
+    public void givenUnsortedListOfObjects_sort_listSortedInAscendingOrder() {
 
         MyArrayList<User> actual = new MyArrayListImpl();
         actual.add(user);
@@ -116,7 +173,7 @@ public class TestClass {
     }
 
     @Test
-    public void quickSortUser() {
+    public void givenUnsortedListOfObjects_sortByQuickSortAlg_listSortedInAscendingOrder() {
 
         MyArrayList<User> actual = new MyArrayListImpl();
         actual.add(user);
@@ -140,7 +197,7 @@ public class TestClass {
     }
 
     @Test
-    public void quickSortString() {
+    public void givenUnsortedListOfStrings_sortByQuickSortAlg_listSortedInAscendingOrder() {
 
         MyArrayList<String> actual = new MyArrayListImpl();
         actual.add("b");
@@ -149,6 +206,8 @@ public class TestClass {
         actual.add("g");
         actual.add("c");
         actual.quickSort();
+
+
 
         List<String> expected = new ArrayList<>();
         expected.add("b");
